@@ -37,13 +37,33 @@ class WordFinder:
         return random_words
     
 
+class SpecialWordFinder(WordFinder):
+    def __init__(self, newFilePath):
+        # super().__init__(filePath) #no colon at end;filePath refers to parent attribute
+        self.newFilePath = newFilePath
+        self.specialArray = []
+    def separate (self):
+        file = open(self.newFilePath)
+        for line in file:
+            if line.strip() and not line.startswith('#'):
+                word = line.strip()
+                self.specialArray.append(word)
+        return self.specialArray
+            
+specialwordfinder = SpecialWordFinder('complex.txt')
+print(specialwordfinder.separate())
+
+        
 
 
-wordFinder = WordFinder('words.txt') # wordFinder = class WordFinder('words.txt') 
-print(wordFinder)
+
+
+# wordFinder = WordFinder('words.txt') # wordFinder = class WordFinder('words.txt') 
+# print(wordFinder)
 
 
 
-print(wordFinder.random())
-print(wordFinder.random())
+# print(wordFinder.random())
+# print(wordFinder.random())
     
+
